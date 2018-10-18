@@ -21,7 +21,11 @@ export default class Books extends Component {
                 />
                 <div className="book-shelf-changer">
                   <select
-                    value={shelf === true ? `${shelf}` : "none"}
+                    value={
+                      shelf === "currentlyReading" || "wantToRead" || "read"
+                        ? `${shelf}`
+                        : "none"
+                    }
                     onChange={e => onUpdateBook(book, e.target.value)}
                   >
                     <option value="move" disabled>
