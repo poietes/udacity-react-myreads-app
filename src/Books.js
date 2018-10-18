@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 export default class Books extends Component {
   render() {
-    const { books, shelf } = this.props;
+    const { books, shelf, onUpdateBook } = this.props;
     const showingBooks = books.filter(book => book.shelf === shelf);
 
     return (
@@ -20,7 +20,7 @@ export default class Books extends Component {
                   }}
                 />
                 <div className="book-shelf-changer">
-                  <select>
+                  <select onChange={e => onUpdateBook(book, e.target.value)}>
                     <option value="move" disabled>
                       Move to...
                     </option>
@@ -32,7 +32,7 @@ export default class Books extends Component {
                 </div>
               </div>
               <div className="book-title">{book.title}</div>
-              <div className="book-authors">{book.author}</div>
+              <div className="book-authors">{book.authors}</div>
             </div>
           </li>
         ))}
