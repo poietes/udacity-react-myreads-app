@@ -20,7 +20,10 @@ export default class Books extends Component {
                   }}
                 />
                 <div className="book-shelf-changer">
-                  <select onChange={e => onUpdateBook(book, e.target.value)}>
+                  <select
+                    value={shelf === true ? `${shelf}` : "none"}
+                    onChange={e => onUpdateBook(book, e.target.value)}
+                  >
                     <option value="move" disabled>
                       Move to...
                     </option>
