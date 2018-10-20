@@ -14,7 +14,9 @@ export default class SearchBooks extends Component {
       const query = e.target.value.trim();
       BooksAPI.search(query)
         .then(books => {
-          this.setState(() => ({ books: books }));
+          books.error === undefined
+            ? this.setState(() => ({ books: books }))
+            : this.setState(() => ({ books: [] }));
         })
         .catch(() => {
           this.setState(() => ({ books: [] }));
